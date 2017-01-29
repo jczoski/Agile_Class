@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1a130494-3d2e-4a9a-8b7c-4bbe02104de9" name="myconfig" url="http://almostdone.joshczoski.com">
+        <fileTransfer host="almostdone.joshczoski.com" port="21" rootFolder="/almostdone.joshczoski.com">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
