@@ -24,11 +24,6 @@ echo "</div>";
 ?>
 
 <?php
-/**
- * Created by PhpStorm.
- * User: JoshC
- * Date: 1/22/2017
- * Time: 4:51 PM
- */
+
 include "includes/footer.php";
 ?>
