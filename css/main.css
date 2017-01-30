@@ -7,6 +7,10 @@
     border: 5px green;
 
 }
+.header-style{
+
+    color: yellow;
+}
 .title_image{
     position:relative;
     width:100%;
@@ -58,4 +62,7 @@ a:hover{
 }
 .post_message:h2{
     color:black;
+}
+.aqua-text{
+    color: aqua;
 }

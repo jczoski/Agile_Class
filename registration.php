@@ -17,7 +17,7 @@ $username = mysqli_real_escape_string( $db, $_POST["username"]);
 $password = mysqli_real_escape_string( $db, $_POST["password"]);
 $verifypassword = mysqli_real_escape_string( $db, $_POST["verifypassword"]);
 $email = mysqli_real_escape_string( $db, $_POST["email"]);
-$advanced_user = mysqli_real_escape_string( $db, $_POST["advanced_user"]);
+$advanced_user_check = isset($_POST["advanced_user"])?TRUE:FALSE;
 $submit = mysqli_real_escape_string( $db, $_POST["submit"]);
 
 $encrypted_password = password_hash( $password, PASSWORD_DEFAULT );
@@ -43,8 +43,9 @@ if( $submit ){
         if( empty($registration_error)){
             // OK - insert the user into the db
             $sql = "INSERT INTO users (user_id, f_name, l_name, user_name, password, email, advanced)
-                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email', '$advanced_user')";
+                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email',$advanced_user_check".")";
             $result = $db->query( $sql );
+            echo $sql;
             // Look at $result errors and display if there are some
 //            if( ! $result ){
 //                $registration_error .= "(" . $db->connect_errno . ")" .
@@ -59,26 +60,30 @@ if( $submit ){
 }
 
 $form = <<<END_OF_FORM
-    
-    <form method="POST" action="/register.php">
-        <label for"firstname">First Name: </label><br/>
+    <br />
+    <div class="aqua-text">
+    <form method="POST" action="/registration.php">
+        <label for="firstname">First Name: </label><br/>
         <input type="text" name="firstname" value="$firstname"/><br/>
-        <label for"lastname">Last Name: </label><br/>
+        <label for="lastname">Last Name: </label><br/>
         <input type="text" name="lastname" value="$lastname"/><br/>
         <label for"username">Username: </label><br/>
         <input type="text" name="username" value="$username"/><br/>
-        <label for"password">Password: </label><br/>
+        <label for="password">Password: </label><br/>
         <input type="password" name="password" value=""/><br/>
-        <label for"verifypassword">Verify Password: </label><br/>
+        <label for="verifypassword">Verify Password: </label><br/>
         <input type="password" name="verifypassword" value=""/><br/>
-        <label for"email">Email: </label><br/>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user>
+        <label for="email">Email: </label><br/>
+        
         <input type="email" name="email" value="$email"/><br/>
+        <label for="advanced_user">Advanced User</label>
+        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
+</div>
 END_OF_FORM;
 
 echo $form;
-include "include/footer";
+include "includes/footer.php";
 ob_end_flush()
 ?>
