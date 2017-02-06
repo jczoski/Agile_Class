@@ -38,7 +38,7 @@ $post_topic = <<<TOPIC_FORM
 <label for="topic">Topic:</label><br />
 <input type="text" name="topic" placeholder="Topic" value="$topic" size="159"/><br />
 <label for="message">Message:</label><br />
-<textarea name="message" rows="25" cols="160">$message_body</textarea><br />
+<textarea name="message" rows="25" cols="155">$message_body</textarea><br />
 <input type="submit" name="submit" value="Post Topic" />
 </form>
 TOPIC_FORM;

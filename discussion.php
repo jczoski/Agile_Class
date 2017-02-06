@@ -30,6 +30,18 @@ POSTS;
 echo $posts;
 echo "</table>";
 if(isset($_SESSION["username"]))
-echo "<a href=\"reply.php\"><h2>Post reply</h2></a>";
+//echo "<a href=\"reply.php\"><h2>Reply</h2></a>";
+
+?>
+
+<div>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <label for="reply">Reply:</label><br />
+    <textarea name="reply" rows="25" cols="155">$message_body</textarea><br />
+    <input type="submit" name="submit" value="reply" />
+<div>
+
+<?php
+
 include "includes/footer.php";
 ?>
