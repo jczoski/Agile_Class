@@ -37,7 +37,7 @@ if(isset($_SESSION["username"]))
 <div>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <label for="reply">Reply:</label><br />
-    <textarea name="reply" rows="25" cols="155">$message_body</textarea><br />
+    <textarea name="reply" rows="15" cols="55"></textarea><br />
     <input type="submit" name="submit" value="reply" />
 <div>
 
