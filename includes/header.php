@@ -7,7 +7,7 @@
  */
 
 
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,5 +16,13 @@
 <title><?php $title ?></title>
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link rel="stylesheet" type="text/css" href="../css/format_table.css" />
-</head><body>
-<header><a href="login.php">Log In/Register</a></header>
+</head><body><header class="header-style">
+<?php if(!isset($_SESSION["username"])){
+    echo "<a href='login.php'>Log In/Register</a>";
+}
+else {
+    echo "Hello " . $_SESSION["username"];
+    echo "\t\t\t <a href='logout.php'>Log Out</a>";
+}
+?>
+</header>

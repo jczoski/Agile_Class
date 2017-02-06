@@ -11,18 +11,18 @@ include "includes/functions.php";
 include "includes/header.php";
 
 $db = db_connect();
-
+/*
 $firstname = mysqli_real_escape_string( $db, $_POST["firstname"]);
-$lastname = mysqli_real_escape_string( $db, $_POST["lastname"]);
+$lastname = mysqli_real_escape_string( $db, $_POST["lastname"]);*/
 $username = mysqli_real_escape_string( $db, $_POST["username"]);
 $password = mysqli_real_escape_string( $db, $_POST["password"]);
-$verifypassword = mysqli_real_escape_string( $db, $_POST["verifypassword"]);
+/*$verifypassword = mysqli_real_escape_string( $db, $_POST["verifypassword"]);
 $email = mysqli_real_escape_string( $db, $_POST["email"]);
-$advanced_user = mysqli_real_escape_string( $db, $_POST["advanced_user"]);
+$advanced_user = mysqli_real_escape_string( $db, $_POST["advanced_user"]);*/
 $submit = mysqli_real_escape_string( $db, $_POST["submit"]);
 
 if ($submit){
-    $sql = "SELECT user_name from users where user_name='$username'";
+    $sql = "SELECT user_name,password from users where user_name='$username'";
     $result = $db->query( $sql );
     if( $result && $result->num_rows){
         list( $username, $password_hash ) = $result->fetch_row();
