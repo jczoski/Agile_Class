@@ -33,7 +33,7 @@ $form = <<<END_OF_FORM
     <input type="text" name="username" value="$username"/><br/>
     <label for="email">Email: </label><br/>
     <input type="email" name="email" value="$email"/><br/>
-    <textarea name="message" placeholder="Your message goes here" maxlength="1000" rows="8" cols="50" required>$message</textarea><br/>
+    <textarea name="message" placeholder="Your application message goes here" maxlength="1000" rows="8" cols="50" required>$message</textarea><br/>
     <input type="submit" name="submit" value="Submit"/><br/>
   </form><br/>
 </div>
