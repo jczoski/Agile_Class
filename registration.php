@@ -41,12 +41,12 @@ if( $submit ){
         $registration_error .= "<p>Username already exists...try again!</p>";
     } else {
         if( empty($registration_error)){
-            if($advanced_user_check != true ){
-                $advanced_user_check = false;
+            if(empty($advanced_user_check)){
+                $advanced_user_check = 0;
             }
             // OK - insert the user into the db
             $sql = "INSERT INTO users (user_id, f_name, l_name, user_name, password, email, advanced)
-                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email',$advanced_user_check".")";
+                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email', $advanced_user_check)";
             $result = $db->query( $sql );
             echo $sql;
             // Look at $result errors and display if there are some
@@ -55,7 +55,7 @@ if( $submit ){
 //            $db->connect_error;
 //            }
             ob_clean();
-            if($advanced_user_check == false){
+            if($advanced_user_check == 0){
                 header( "Location: /login.php");
             } else {
                 header( "Location: /advanced_application.php");
