@@ -52,7 +52,11 @@ if( $submit ){
 //            $db->connect_error;
 //            }
             ob_clean();
-            header( "Location: /login.php");
+            if($advanced_user_check == 0){
+                header( "Location: /login.php");
+            } else {
+                header( "Location: /advanced_application.php");
+            }
         }
     }
     //create a new user
@@ -77,7 +81,7 @@ $form = <<<END_OF_FORM
         
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user><br />
+        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user_check><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
 </div>

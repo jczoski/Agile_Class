@@ -63,7 +63,7 @@ a:hover{
 
 /*    margin: 0 auto; */ /*supposed to work, doesn't work for this*/
 }
-.post_message:h2{
+.post_message h2{
     color:black;
 }
 .aqua-text{
