@@ -42,12 +42,14 @@ echo "<table class=\"table-style\"><th>Author</th><th>Topic: $topic</th>";
 while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_text) = $result->fetch_row()) {
 //$post_date = date("D",$post_date) . date("M",$post_date). date("j",$post_date).date("o",$post_date);
     $editable = "&nbsp;";
+    $delete = "&nbsp;";
     if ($author === $_SESSION["username"]) {
         $editable = "<a href='edit_post.php?id=$id'>Edit post</a>";
+        $delete = "<a href='delete_post.php?id=$id'>Delete post</a>";
     }
     $posts = <<<POSTS
 
-<tr><td>$author</td><td>posted: $post_date<br />$post_text</td><td>$editable</td></tr>
+<tr><td>$author</td><td>posted: $post_date<br />$post_text</td><td>$editable</td><td>$delete</td></tr>
 
 POSTS;
 

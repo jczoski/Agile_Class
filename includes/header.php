@@ -17,6 +17,9 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link rel="stylesheet" type="text/css" href="../css/format_table.css" />
 </head><body><header class="header-style">
+    <nav class="nav-style">
+        <a href="almostdone.joshczoski.com">Home</a>
+    </nav>
 <?php if(!isset($_SESSION["username"])){
     echo "<a href='login.php'>Log In/Register</a>";
 }
@@ -25,4 +28,5 @@ else {
     echo "\t\t\t <a href='logout.php'>Log Out</a>";
 }
 ?>
+
 </header>
