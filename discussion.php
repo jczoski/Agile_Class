@@ -26,8 +26,8 @@ $reply_text = mysqli_real_escape_string($db,$_POST["reply"]);
 $reply_user = mysqli_real_escape_string($db, $_POST["reply_user"]);
 
 if($submit){
-    $sql = "INSERT INTO posts(id,author,topic_name,category,post_date,modify_date,post_text)
-VALUES(null,'$reply_user','$topic','$category',NOW(),NOW(),'$reply_text')";
+    $sql = "INSERT INTO posts(id,author,topic_name,category,post_date,modify_date,post_text,opening_post)
+VALUES(null,'$reply_user','$topic','$category',NOW(),NOW(),'$reply_text',0)";
     $result = $db->query($sql);
 
 }
@@ -39,7 +39,7 @@ $result = $db->query($sql);
 echo "<h2>$topic</h2>";
 
 echo "<table class=\"table-style\"><th>Author</th><th>Topic: $topic</th>";
-while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_text) = $result->fetch_row()) {
+while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_text,$opening_post) = $result->fetch_row()) {
 //$post_date = date("D",$post_date) . date("M",$post_date). date("j",$post_date).date("o",$post_date);
     $editable = "&nbsp;";
     $delete = "&nbsp;";

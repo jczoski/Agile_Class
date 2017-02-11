@@ -20,8 +20,8 @@ $author = $_SESSION["username"];
 
 
 if($submit) {
-    $sql = "INSERT INTO posts (id,author,topic_name,category,post_date,modify_date,post_text)
-VALUES (null,'$author','$topic','$category',NOW(),NOW(),'$message_body' )";
+    $sql = "INSERT INTO posts (id,author,topic_name,category,post_date,modify_date,post_text,opening_post)
+VALUES (null,'$author','$topic','$category',NOW(),NOW(),'$message_body',1 )";
 
 
 $result = $db->query($sql);
