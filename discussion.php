@@ -29,7 +29,6 @@ if($submit){
     $sql = "INSERT INTO posts(id,author,topic_name,category,post_date,modify_date,post_text,opening_post)
 VALUES(null,'$reply_user','$topic','$category',NOW(),NOW(),'$reply_text',0)";
     $result = $db->query($sql);
-
 }
 
 

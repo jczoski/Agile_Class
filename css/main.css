@@ -7,23 +7,27 @@
     border: 5px green;
 
 }
+
 .table-style{
     background: rgba(54, 25, 25, .75);
 }
+
 .nav-style{
     margin-bottom:50px;
     display: flex;
     justify-content:space-around;
     list-style-type:none;
 }
-.header-style{
 
+.header-style{
     color: yellow;
 }
+
 .title_image{
     position:relative;
     width:100%;
 }
+
 .site_title{
     position: absolute;
     top: 80px;
@@ -33,9 +37,11 @@
     color:lightblue;
     font-size:5em;
 }
+
 h2{
     color: aquamarine;
 }
+
 body{
     background:url("../images/Destiny_Concept_Art_18b.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -43,6 +49,7 @@ body{
     -o-background-size: cover;
     background-size: cover;
 }
+
 .login_box{
     border: solid 5px green;
     color: purple;
@@ -51,15 +58,19 @@ body{
     margin-right: 700px;
     padding-top:20px;
 }
+
 a:link{
     color: aquamarine;
 }
+
 a:visited{
     color: lightblue;
 }
+
 a:hover{
     color: yellow;
 }
+
 .post_message{
     padding: 5px;
     background-color: black;
@@ -69,9 +80,15 @@ a:hover{
 
 /*    margin: 0 auto; */ /*supposed to work, doesn't work for this*/
 }
+
 .post_message h2{
     color:black;
 }
+
 .aqua-text{
     color: aqua;
+}
+
+.align-center{
+    align-self: center;
 }
