@@ -16,7 +16,7 @@ include "includes/header.php";
 
 $forum_table = <<<FORUM_TABLE
 <div class="align-center">
- <h2 style="left: 50%;">Forum Main Categories</h2>
+ <h2 style="postion:absolute; left: 50%;">Forum Main Categories</h2>
  
     <table class="table-style">
     
