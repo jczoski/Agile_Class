@@ -89,7 +89,7 @@ a:hover{
     color: aqua;
 }
 
-.align-center{
-    align-content: center;
+.align-center h2, table{
+    margin: 0 auto;
     background: green;
 }
