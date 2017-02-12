@@ -90,5 +90,5 @@ a:hover{
 }
 
 .align-center{
-    align-self: center;
+    position: relative;
 }
