@@ -17,7 +17,7 @@ $sql = "SELECT author, topic_name,category,post_date,modify_date from posts wher
 $result = $db->query($sql);
 //<td></td>
 echo "<table class=\"table-style\">
-        <th colspan='4'>$forum_type</th>";
+        <th colspan='4'><h2>$forum_type</h2></th>";
 while(list($author,$topic_name,$category,$post_date,$modify_date) = $result->fetch_row()){
     $post_list = <<<POST_LIST
 
