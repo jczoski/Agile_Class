@@ -95,8 +95,8 @@ a:hover{
 }
 
 .align-center table{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
     width: 50%;
     margin: 0 auto;
 }
