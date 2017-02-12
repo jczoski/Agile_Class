@@ -60,7 +60,7 @@ if (isset($_SESSION["username"])) {
     $return_address = $_SERVER['PHP_SELF'];
 $reply_form=<<<REPLY_FORM
     <div>
-        <form action="$return_address" method="post">
+        <form class="table-style" action="$return_address" method="post">
             <label for="reply">Reply:</label><br/>
             <textarea name="reply" rows="15" cols="55"></textarea><br/>
             <input type="hidden" name="reply_user" value="$user_name">
