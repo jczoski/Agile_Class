@@ -96,9 +96,7 @@ a:hover{
     padding-bottom: 20px;
 }
 
-.align-center table{
-    /*padding-top: 10px;
-    padding-bottom: 10px;*/
+.forum_header{
     width: 50%;
     margin: 0 auto;
 }

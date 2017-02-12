@@ -15,7 +15,7 @@ include "includes/header.php";
 
 
 $forum_table = <<<FORUM_TABLE
-<div class="align-center">
+
     <table class="table-style">
     
         <th colspan="5"><h2>Forum Main Categories</h2></th>
@@ -25,7 +25,7 @@ $forum_table = <<<FORUM_TABLE
         <tr><td></td><td><h4><a href="post_list.php?forum_type=Game Tips">Game Tips</a></h4>Discuss tips and strategies for Destiny.</td><td>$game_tips_posts topics<br/>$game_tips_replies replies</td><td></td></tr>
                 
     </table>
-</div>
+
 FORUM_TABLE;
 
 echo $forum_table;
