@@ -35,9 +35,9 @@ VALUES(null,'$reply_user','$topic','$category',NOW(),NOW(),'$reply_text',0)";
 $sql = "SELECT * from posts where topic_name='$topic' and category='$category'";
 
 $result = $db->query($sql);
-echo "<h2>$topic</h2>";
+//echo "<h2>$topic</h2>";
 
-echo "<table class=\"table-style\"><th>Author</th><th>Topic: $topic</th>";
+echo "<table class=\"table-style\"><th><h2>Author</h2></th><th><h2>Topic: $topic</h2></th>";
 while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_text,$opening_post) = $result->fetch_row()) {
 //$post_date = date("D",$post_date) . date("M",$post_date). date("j",$post_date).date("o",$post_date);
     $editable = "&nbsp;";
