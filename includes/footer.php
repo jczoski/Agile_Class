@@ -2,5 +2,5 @@
 
 ?>
 <footer>
-    <h3>This page Copyright &copy; Almost Done INC</h3>
+    <h4>This page Copyright &copy; Almost Done INC</h4>
 </footer></html>
