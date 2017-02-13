@@ -15,10 +15,10 @@ include "includes/header.php";
 
 
 $forum_table = <<<FORUM_TABLE
- <h2>Forum Main Categories</h2>
- 
+
     <table class="table-style">
     
+        <th colspan="5"><h2>Forum Main Categories</h2></th>
         <tr><td></td><td><h4><a href="post_list.php?forum_type=Introductions">Introduce Yourself</a></h4>New to the community? Introduce yourself!</td><td>$introduce_posts topics<br/>$introduce_replies replies</td><td></td></tr>
         <tr><td></td><td><h4><a href="post_list.php?forum_type=General Discussion">General Discussion</a></h4>Anything goes!</td><td>$general_posts topics<br/>$general_replies replies</td><td></td></tr>
         <tr><td></td><td><h4><a href="post_list.php?forum_type=Feed Discussion">Feed Discussion</a></h4>Discussion related to any particular livestream in the site's history.</td><td>$livestream_posts topics<br/>$livestream_replies replies</td><td></td></tr>

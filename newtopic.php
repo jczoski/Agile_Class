@@ -20,8 +20,8 @@ $author = $_SESSION["username"];
 
 
 if($submit) {
-    $sql = "INSERT INTO posts (id,author,topic_name,category,post_date,modify_date,post_text)
-VALUES (null,'$author','$topic','$category',NOW(),NOW(),'$message_body' )";
+    $sql = "INSERT INTO posts (id,author,topic_name,category,post_date,modify_date,post_text,opening_post)
+VALUES (null,'$author','$topic','$category',NOW(),NOW(),'$message_body',1 )";
 
 
 $result = $db->query($sql);
@@ -38,7 +38,7 @@ $post_topic = <<<TOPIC_FORM
 <label for="topic">Topic:</label><br />
 <input type="text" name="topic" placeholder="Topic" value="$topic" size="159"/><br />
 <label for="message">Message:</label><br />
-<textarea name="message" rows="25" cols="160">$message_body</textarea><br />
+<textarea name="message" rows="25" cols="155">$message_body</textarea><br />
 <input type="submit" name="submit" value="Post Topic" />
 </form>
 TOPIC_FORM;

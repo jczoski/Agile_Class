@@ -41,9 +41,12 @@ if( $submit ){
         $registration_error .= "<p>Username already exists...try again!</p>";
     } else {
         if( empty($registration_error)){
+            if(empty($advanced_user_check)){
+                $advanced_user_check = 0;
+            }
             // OK - insert the user into the db
             $sql = "INSERT INTO users (user_id, f_name, l_name, user_name, password, email, advanced)
-                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email',$advanced_user_check".")";
+                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email', $advanced_user_check)";
             $result = $db->query( $sql );
             echo $sql;
             // Look at $result errors and display if there are some
@@ -52,7 +55,11 @@ if( $submit ){
 //            $db->connect_error;
 //            }
             ob_clean();
-            header( "Location: /login.php");
+            if($advanced_user_check == 0){
+                header( "Location: /login.php");
+            } else {
+                header( "Location: /advanced_application.php");
+            }
         }
     }
     //create a new user
@@ -77,7 +84,7 @@ $form = <<<END_OF_FORM
         
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user><br />
+        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user_check><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
 </div>
