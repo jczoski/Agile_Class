@@ -9,7 +9,7 @@
 }
 
 #stream_box {
-
+    display: inline-block;
     background-color: black;
     height: 400px;
     width: 50%;
@@ -26,7 +26,7 @@
 }
 
 .center_this {
-    margin: 0 auto;
+    text-align: center;
 
 }
 
