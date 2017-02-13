@@ -9,12 +9,15 @@
 }
 
 #stream_box {
-    width: 35%;
-    height: 35%;
+    margin: 30px;
     background-color: black;
+
+}
+
+#stream_box h2 {
+    margin: 5%;
+    font-weight: bold;
     color: white;
-    padding-top: 25px;
-    padding-bottom: 25px;
 }
 
 .table-style{
