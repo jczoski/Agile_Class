@@ -102,6 +102,15 @@ a:hover{
     margin: 0 auto;
 }
 
+#stream_box {
+    width: 35%;
+    height: 35%;
+    background-color: black;
+    color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
 footer{
     text-align: center;
     margin: 0 auto;

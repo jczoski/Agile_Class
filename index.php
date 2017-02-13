@@ -29,8 +29,12 @@ $forum_table = <<<FORUM_TABLE
 FORUM_TABLE;
 
 echo $forum_table;
-
 ?>
+
+  <div id="stream_box">
+    <h2>No Live Stream In Progress</h2>
+  </div>
+
 <?php
 include "includes/footer.php";
 ?>
