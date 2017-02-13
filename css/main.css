@@ -8,6 +8,15 @@
 
 }
 
+#stream_box {
+    width: 35%;
+    height: 35%;
+    background-color: black;
+    color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
 .table-style{
     color: #fff;
     background: rgba(54, 25, 25, .75);
@@ -100,15 +109,6 @@ a:hover{
 .forum_header{
     width: 50%;
     margin: 0 auto;
-}
-
-#stream_box {
-    width: 35%;
-    height: 35%;
-    background-color: black;
-    color: white;
-    padding-top: 25px;
-    padding-bottom: 25px;
 }
 
 footer{
