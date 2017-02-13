@@ -18,7 +18,7 @@
 }
 
 #stream_box h2 {
-    margin: 5%;
+
     font-weight: bold;
     color: white;
     text-align: center;
@@ -26,11 +26,13 @@
 }
 
 .center_this {
+    padding-top: 25px;
     text-align: center;
 
 }
 
 .table-style{
+    padding-top: 25px;
     color: #fff;
     background: rgba(54, 25, 25, .75);
     width: 50%;
