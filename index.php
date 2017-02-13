@@ -30,7 +30,7 @@ FORUM_TABLE;
 
 echo $forum_table;
 ?>
-  <div class="align-center">
+  <div class="center_this">
   <div id="stream_box">
     <h2>No Live Stream In Progress</h2>
   </div>

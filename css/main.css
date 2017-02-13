@@ -11,7 +11,7 @@
 #stream_box {
     margin: 30px;
     background-color: black;
-    height: 40000px;
+    height: 400px;
     width: 50%;
 
 }
@@ -20,6 +20,12 @@
     margin: 5%;
     font-weight: bold;
     color: white;
+    text-align: center;
+}
+
+.center_this {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .table-style{
