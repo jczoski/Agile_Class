@@ -32,7 +32,7 @@ echo $forum_table;
 ?>
   <div class="center_this">
   <div id="stream_box">
-    <h2>No Live Stream In Progress</h2>
+    <h2>Stream is Closed</h2>
   </div>
   </div>
 
