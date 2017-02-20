@@ -16,9 +16,21 @@ $id =  mysqli_real_escape_string($db,$_GET["id"]);
 $submit = mysqli_real_escape_string($db,$_POST["submit"]);
 $submit_pic= $_POST["submit_pic"];
 $username = $_SESSION["username"];
+$submit_text = $_POST["submit_text"];
+$text_size = $_POST["text_size"];
+
+if($submit_text){
+    $sql = "UPDATE users SET text_size=$text_size
+WHERE user_name='$username'";
+    $result = $db->query($sql);
+    $_SESSION['text_size'] = $text_size;
+    ob_clean();
+    header("Location: /profile_edit.php");
+}
+
 if($submit_pic){
     $uploaded_file_name = $_FILES["image"]["tmp_name"];
-    echo move_uploaded_file($uploaded_file_name, "upload/".$_FILES["image"]["name"]);
+    move_uploaded_file($uploaded_file_name, "upload/".$_FILES["image"]["name"]);
     $image_path = "upload/" . $_FILES["image"]["name"];
     $file_type = $_FILES["image"]["type"];
 
@@ -47,9 +59,22 @@ WHERE user_name='$username'";
     $result = $db->query($sql);
 }
 
+$text_size_form=<<<TEXT_SETTING
+<form action="/profile_edit.php" method="POST" style="color:white;">
+<label for="text_size">Text Size Preference:</label><br>
+<input name="text_size" value="1" type="radio">smallest<br>
+<input name="text_size" value="2" type="radio">small<br>
+<input name="text_size" value="3" type="radio">normal<br>
+<input name="text_size" value="4" type="radio">larger<br>
+<input name="text_size" value="5" type="radio">largest<br>
+<input type="submit" name="submit_text" value="Update Text Size" />
+</form>
+TEXT_SETTING;
+
+echo $text_size_form;
+
 $image_form=<<<END_OF_FORM
 <img src="$thumb_filename" /><br />
-<img src="$image_path" />
 <form action="/profile_edit.php" method="POST" enctype="multipart/form-data">
 <input type="file" name="image" />
 <input type="submit" name="submit_pic" value="Update Image" />

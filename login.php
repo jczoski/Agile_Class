@@ -27,8 +27,9 @@ if ($submit){
     if( $result && $result->num_rows){
         list( $username, $password_hash ) = $result->fetch_row();
         if(password_verify( $password, $password_hash )){
-            $sql = "Select image_thumbnail from users where user_name='$username'";
+            $sql = "Select image_thumbnail, text_size from users where user_name='$username'";
             $pic = $db->query($sql)->fetch_row()[0];
+            $_SESSION['text_size'] = $db->query($sql)->fetch_row()[1];
             $_SESSION['username'] = $username;
             $_SESSION['profile_pic'] = $pic;
             ob_clean();
