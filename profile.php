@@ -10,6 +10,7 @@ include "includes/functions.php";
 if(!isset($_SESSION["username"])){
     header("Location: almostdone.joshczoski.com");
 }
+echo "<h4><a href='profile_edit.php'>Edit Profile</a></h4>";
 echo "<h3><a href='posts_by_author.php'>See Posting History</a></h3>";
 
 ?>
