@@ -27,7 +27,10 @@ if ($submit){
     if( $result && $result->num_rows){
         list( $username, $password_hash ) = $result->fetch_row();
         if(password_verify( $password, $password_hash )){
+            $sql = "Select image_thumbnail from users where user_name='$username'";
+            $pic = $db->query($sql)->fetch_row()[0];
             $_SESSION['username'] = $username;
+            $_SESSION['profile_pic'] = $pic;
             ob_clean();
             header("Location: /");
         }

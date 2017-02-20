@@ -18,13 +18,16 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../css/format_table.css" />
 </head><body><header class="header-style">
     <nav class="nav-style">
-        <a href="almostdone.joshczoski.com">Home</a>
+        <a href="http://almostdone.joshczoski.com">Home</a>
     </nav>
 <?php if(!isset($_SESSION["username"])){
     echo "<a href='login.php'>Log In/Register</a>";
 }
 else {
-    echo "Hello " . $_SESSION["username"];
+    $u_name = $_SESSION["username"];
+    $profile_pic_location = $_SESSION['profile_pic'];
+    $profile_pic_image = "<img src='$profile_pic_location'>";//can be used anywhere in the page
+    echo $profile_pic_image . "<br />Hello " ."<a href='profile.php'>$u_name</a>";
     echo "\t\t\t <a href='logout.php'>Log Out</a>";
 }
 ?>
