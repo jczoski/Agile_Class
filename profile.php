@@ -10,7 +10,7 @@ include "includes/header.php";
 include "includes/functions.php";
 if(!isset($_SESSION["username"])){
     ob_clean();
-    header("Location: almostdone.joshczoski.com");
+    header("Location: /index.php");
 }
 
 echo "<h4><a href='profile_edit.php'>Edit Profile</a></h4>";
