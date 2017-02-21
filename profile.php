@@ -50,10 +50,11 @@ $form = <<<END_OF_FORM
         <label for="advanced_user">$advanced_user_check</label><br/>
         <label for="image">Avatar Image:</label><br/>
         <img src="$image" height="200" width="300" /><br />
-        <label for="text_size">$text_size_check</label>
-        <a href='profile_edit.php'>Edit Profile</a>
-        <a href='posts_by_author.php'>See Posting History</a>
+        <label for="text_size">$text_size_check</label><br/>
+        
     </form><br/> 
+    <a href='profile_edit.php'>Edit Profile</a><br/>
+    <a href='posts_by_author.php'>See Posting History</a>
 </div>
 END_OF_FORM;
 
