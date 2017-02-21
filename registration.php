@@ -63,7 +63,7 @@ if( $submit ){
         }
     }
     //create a new user
-    $registration_error;  //redirect if ok
+    echo $registration_error;  //redirect if ok
 }
 
 $form = <<<END_OF_FORM

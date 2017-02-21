@@ -21,18 +21,26 @@ $email = mysqli_real_escape_string( $db, $_POST["email"]);
 $message = mysqli_real_escape_string( $db, $_POST["message"]);
 $submit = mysqli_real_escape_string( $db, $_POST["submit"]);
 
+$registration_error = "";
+if( $submit ){
+    if( empty( $message ) )
+        $registration_error .= "Must provide info<br/>";
+
+    // Check that this is a unique user - by checking if they exist
+
+        if( empty($registration_error)){
+            ob_clean();
+            header( "Location: /login.php");
+        }
+
+    //create a new user
+    echo $registration_error;  //redirect if ok
+}
+
 $form = <<<END_OF_FORM
 <br />
 <div class="aqua-text">
   <form method="POST" action="/advanced_application.php">
-    <label for="firstname">First Name: </label><br/>
-    <input type="text" name="firstname" value="$firstname"/><br/>
-    <label for="lastname">Last Name: </label><br/>
-    <input type="text" name="lastname" value="$lastname"/><br/>
-    <label for"username">Username: </label><br/>
-    <input type="text" name="username" value="$username"/><br/>
-    <label for="email">Email: </label><br/>
-    <input type="email" name="email" value="$email"/><br/>
     <textarea name="message" placeholder="Your application message goes here" maxlength="1000" rows="8" cols="50" required>$message</textarea><br/>
     <input type="submit" name="submit" value="Submit"/><br/>
   </form><br/>
