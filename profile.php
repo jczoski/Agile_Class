@@ -15,7 +15,7 @@ if(!isset($_SESSION["username"])){
 
 $db = db_connect();
 
-$username = mysqli_real_escape_string( $db, $_GET["username"]);
+$username = $_SESSION["username"];
 
 echo "$username pig";
 
