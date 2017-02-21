@@ -21,6 +21,11 @@ $sql = "SELECT * from users WHERE user_name = '$username'";
 $result = $db->query($sql);
 list($user_id, $firstname, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
+echo "$l_name";
+echo "$username";
+echo "$email";
+echo "$text_size";
+
 if($advanced == 1){
     $advanced_user_check = "advanced user: Yes";
 } else {
