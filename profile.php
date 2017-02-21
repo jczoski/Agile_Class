@@ -42,7 +42,7 @@ if($text_size == 0 || 3){
 $form = <<<END_OF_FORM
     <br />
     <div class="table-style aqua-text">
-    <form method="POST" action="/registration.php">
+    <form>
         <label for="firstname">"$f_name"</label><br/>
         <label for="lastname">$l_name</label><br/>
         <label for"username">$username</label><br/>
