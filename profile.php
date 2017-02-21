@@ -22,9 +22,9 @@ $result = $db->query($sql);
 list($user_id, $firstname, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 if($advanced == 1){
-    $advanced_user_check = "advanced user: Yes";
+    $advanced_user_check = "Advanced User: Yes";
 } else {
-    $advanced_user_check = "advanced user: No";
+    $advanced_user_check = "Advanced User: No";
 }
 
 if($text_size == 0 || 3){
@@ -43,14 +43,17 @@ $form = <<<END_OF_FORM
     <br />
     <div class="table-style aqua-text">
     <form>
-        <label for="firstname">$firstname</label><br/>
-        <label for="lastname">$l_name</label><br/>
-        <label for"username">$username</label><br/>
-        <label for="email">$email</label><br/>
+        <label for="firstname">First Name: $firstname</label><br/>
+        <label for="lastname">Last Name: $l_name</label><br/>
+        <label for"username">User Name: $username</label><br/>
+        <label for="email">Email: $email</label><br/>
         <label for="advanced_user">$advanced_user_check</label><br/>
+        <label for="image">Avatar Image:</label><br/>
         <img src="$image" height="200" width="300" /><br />
         <label for="text_size">$text_size_check</label>
-    </form><br/>
+        <a href='profile_edit.php'>Edit Profile</a>
+        <a href='posts_by_author.php'>See Posting History</a>
+    </form><br/> 
 </div>
 END_OF_FORM;
 
