@@ -60,10 +60,6 @@ END_OF_FORM;
 
 echo $form;
 
-echo "<h4><a href='profile_edit.php'>Edit Profile</a></h4>";
-echo "<h3><a href='posts_by_author.php'>See Posting History</a></h3>";
-
-
 include "includes/footer.php";
 ob_end_flush()
 ?>
