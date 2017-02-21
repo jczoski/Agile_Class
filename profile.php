@@ -21,7 +21,7 @@ $sql = "SELECT * from users WHERE user_name = '$username'";
 $result = $db->query($sql);
 list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
-echo "$f_name";
+echo "$f_name cat";
 
 if($advanced == 1){
     $advanced_user_check = "advanced user: Yes";
