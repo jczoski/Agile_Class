@@ -17,6 +17,8 @@ $db = db_connect();
 
 $username = mysqli_real_escape_string( $db, $_GET["username"]);
 
+echo "$username pig";
+
 $sql = "SELECT * from users WHERE user_name = '$username'";
 $result = $db->query($sql);
 list($user_id, $firstname, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
