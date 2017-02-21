@@ -21,6 +21,8 @@ $sql = "SELECT * from users WHERE user_name = '$username'";
 $result = $db->query($sql);
 list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
+echo "$f_name";
+
 if($advanced == 1){
     $advanced_user_check = "advanced user: Yes";
 } else {
@@ -43,10 +45,10 @@ $form = <<<END_OF_FORM
     <br />
     <div class="table-style aqua-text">
     <form>
-        <label for="firstname">'$f_name'</label><br/>
-        <label for="lastname">'$l_name'</label><br/>
-        <label for"username">'$username'</label><br/>
-        <label for="email">'$email'</label><br/>
+        <label for="firstname">$f_name</label><br/>
+        <label for="lastname">$l_name</label><br/>
+        <label for"username">$username</label><br/>
+        <label for="email">$email</label><br/>
         <label for="advanced_user">$advanced_user_check</label>
         <img src="$image" /><br />
         <label for="text_size">$text_size_check</label>
