@@ -40,15 +40,18 @@ $result = $db->query($sql);
 echo "<table class=\"table-style\"><th><h2>Author</h2></th><th><h2>Topic: $topic</h2></th>";
 while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_text,$opening_post) = $result->fetch_row()) {
 //$post_date = date("D",$post_date) . date("M",$post_date). date("j",$post_date).date("o",$post_date);
+    $sql = "Select image_thumbnail from users where user_name='$author'";
+    $pic = $db->query($sql)->fetch_row()[0];
     $editable = "&nbsp;";
     $delete = "&nbsp;";
     if ($author === $_SESSION["username"]) {
+        $author = "<a href='profile.php'>" . $author. "</a>";
         $editable = "<a href='edit_post.php?id=$id'>Edit post</a>";
         $delete = "<a href='delete_post.php?id=$id'>Delete post</a>";
     }
     $posts = <<<POSTS
 
-<tr><td>$author</td><td>posted: $post_date<br />$post_text</td><td>$editable</td><td>$delete</td></tr>
+<tr><td>$author <img src='$pic' /></td><td>posted: $post_date<br />$post_text</td><td>$editable</td><td>$delete</td></tr>
 
 POSTS;
 

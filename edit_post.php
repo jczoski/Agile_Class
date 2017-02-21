@@ -25,7 +25,7 @@ if($submit){
 }
 else {
     $sql = "SELECT * from posts where id=$post_id";
-    list($id, $author, $topic, $category, $post_date, $modify_date, $post_text) = $db->query($sql)->fetch_row();
+    list($id, $author, $topic, $category, $post_date, $modify_date, $post_text,$op) = $db->query($sql)->fetch_row();
 }
 $post_topic = <<<TOPIC_FORM
 <h2>Edit Post - $topic</h2>

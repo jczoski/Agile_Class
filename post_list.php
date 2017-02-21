@@ -19,9 +19,10 @@ $result = $db->query($sql);
 echo "<table class=\"table-style\">
         <th colspan='4'><h2>$forum_type</h2></th>";
 while(list($author,$topic_name,$category,$post_date,$modify_date) = $result->fetch_row()){
+if(isset($_SESSION["username"]) && $_SESSION["username"]===$author) {
+    $author = "<a href='profile.php'>" . $author. "</a>";
+        }
     $post_list = <<<POST_LIST
-
-
 <tr><td><h3><a href="discussion.php?author=$author&topic_name=$topic_name&category=$category"> $topic_name</a></h3><br />started by $author</td><td></td><td></td><td></td></tr>
 
 POST_LIST;
