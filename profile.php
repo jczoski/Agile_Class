@@ -15,7 +15,7 @@ if(!isset($_SESSION["username"])){
 
 $db = db_connect();
 
-$username = mysqli_real_escape_string( $db, $_GET["user_name"]);
+$username = mysqli_real_escape_string( $db, $_GET["username"]);
 
 $sql = "SELECT * from users WHERE user_name = $username";
 $result = $db->query($sql);
