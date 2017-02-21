@@ -5,7 +5,7 @@
  * Date: 2/5/2017
  * Time: 10:01 PM
  */
-
+ob_start();
 $title = "Advanced User Application";
 include "includes/header.php";
 include "includes/functions.php";
@@ -52,5 +52,6 @@ echo $form;
 ?>
 <?php
 include "includes/footer.php";
+ob_flush();
 ?>
 
