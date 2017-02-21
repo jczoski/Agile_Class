@@ -68,7 +68,7 @@ if( $submit ){
 
 $form = <<<END_OF_FORM
     <br />
-    <div class="aqua-text">
+    <div class="table-style aqua-text">
     <form method="POST" action="/registration.php">
         <label for="firstname">First Name: </label><br/>
         <input type="text" name="firstname" value="$firstname"/><br/>
