@@ -45,7 +45,7 @@ if( $submit ){
                 $advanced_user_check = 0;
             }
             // OK - insert the user into the db
-            $sql = "INSERT INTO users (user_id, f_name, l_name, user_name, password, email, advanced)
+            $sql = "INSERT INTO users (user_id, f_name, l_name, user_name, password, email, advanced, image, image_thumbnail, text_size)
                                 values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email', $advanced_user_check,NULL,NULL,NULL)";
             $result = $db->query( $sql );
             echo $sql;
@@ -63,7 +63,7 @@ if( $submit ){
         }
     }
     //create a new user
-    $registration_error;  //redirect if ok
+    echo $registration_error;  //redirect if ok
 }
 
 $form = <<<END_OF_FORM

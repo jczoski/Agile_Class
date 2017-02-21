@@ -13,7 +13,7 @@
     background-color: black;
     height: 400px;
     width: 50%;
-    opacity: .8;
+    opacity: .6;
 
 }
 
@@ -22,7 +22,7 @@
     font-weight: bold;
     color: white;
     text-align: center;
-    line-height: 350px;
+    line-height: 400px;
 }
 
 .center_this {
@@ -32,11 +32,11 @@
 }
 
 .table-style{
-
+    /*padding-top: 25px;*/
     color: #fff;
     background: rgba(54, 25, 25, .75);
     width: 50%;
-    margin: 0 auto;
+    margin: 25px auto;
 }
 
 .nav-style{
@@ -53,7 +53,6 @@
 .title_image{
     position:relative;
     width:100%;
-    padding-bottom: 25px;
 }
 
 .site_title{
