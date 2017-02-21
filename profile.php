@@ -41,7 +41,7 @@ if($text_size == 0 || 3){
 
 $form = <<<END_OF_FORM
     <br />
-    <div class="table-style center_this aqua-text">
+    <div style="padding-bottom: 25px; class="table-style center_this aqua-text">
     <form>
         <label for="firstname">First Name: $firstname</label><br/>
         <label for="lastname">Last Name: $l_name</label><br/>
