@@ -17,16 +17,9 @@ $db = db_connect();
 
 $username = $_SESSION["username"];
 
-echo "$username pig";
-
 $sql = "SELECT * from users WHERE user_name = '$username'";
 $result = $db->query($sql);
 list($user_id, $firstname, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
-
-echo "$l_name";
-echo "$username";
-echo "$email";
-echo "$text_size";
 
 if($advanced == 1){
     $advanced_user_check = "advanced user: Yes";
@@ -55,7 +48,7 @@ $form = <<<END_OF_FORM
         <label for"username">$username</label><br/>
         <label for="email">$email</label><br/>
         <label for="advanced_user">$advanced_user_check</label>
-        <img src="$image" /><br />
+        <img src="$image" height="60" width="60" /><br />
         <label for="text_size">$text_size_check</label>
     </form><br/>
 </div>
