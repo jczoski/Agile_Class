@@ -47,8 +47,8 @@ $form = <<<END_OF_FORM
         <label for="lastname">$l_name</label><br/>
         <label for"username">$username</label><br/>
         <label for="email">$email</label><br/>
-        <label for="advanced_user">$advanced_user_check</label>
-        <img src="$image" height="60" width="60" /><br />
+        <label for="advanced_user">$advanced_user_check</label><br/>
+        <img src="$image" height="200" width="300" /><br />
         <label for="text_size">$text_size_check</label>
     </form><br/>
 </div>
