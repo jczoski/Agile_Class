@@ -9,9 +9,10 @@
 }
 
 #stream_box {
+    padding-top: 25px;
     display: inline-block;
     background-color: black;
-    height: 800px;
+    height: 600px;
     width: 50%;
     opacity: .8;
     color: aquamarine;
