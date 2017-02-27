@@ -29,6 +29,15 @@ if( $submit ){
     // Check that this is a unique user - by checking if they exist
 
         if( empty($registration_error)){
+            $to = "rmeili69@netscape.net";
+            $subject = "Advanced User Application";
+            $body = "Hi, user $username has applied saying:\n\n$message";
+            if (mail($to, $subject, $body)) {
+                echo("<p>Application successfully sent!</p>");
+            } else {
+                echo("<p>Application delivery failed…</p>");
+            }
+
             ob_clean();
             header( "Location: /login.php");
         }
@@ -49,8 +58,6 @@ END_OF_FORM;
 
 echo $form;
 
-?>
-<?php
 include "includes/footer.php";
 ob_flush();
 ?>
