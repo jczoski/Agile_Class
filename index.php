@@ -39,10 +39,10 @@ echo $forum_table;
     $YouTubeLive = new EmbedYoutubeLiveStreaming($CHANNELID, $APIKEY);
 
     if (!$YouTubeLive->isLive) {
-      echo "There is no live streaming right now! Response is (Decoded to object):<br><br>";
-      echo "<pre><code>";
+      ?><h2><?php echo "There is no live streaming right now! Response is (Decoded to object):<br><br>"; ?> </h2> <?php
+
       var_dump($YouTubeLive->objectResponse);
-      echo "</code></pre>";
+
     } else {
       echo <<<EOT
       There is a live streaming currently! You can see below!<br>
