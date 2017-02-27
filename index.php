@@ -53,8 +53,6 @@ echo $forum_table;
     Description is: {$YouTubeLive->live_video_description}<br>
     <br>
     Video ID is: {$YouTubeLive->live_video_id}<br><br>
-    Thumbs are: {$YouTubeLive->live_video_thumb_default}, {$YouTubeLive->live_video_thumb_medium}, {$YouTubeLive->live_video_thumb_high} <br><br>
-    Published at: {$YouTubeLive->live_video_published_at}<br><br>
     Channel Title: {$YouTubeLive->channel_title}<br><br>
 
 EOT;
