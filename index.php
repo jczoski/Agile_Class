@@ -41,7 +41,7 @@ echo $forum_table;
     if (!$YouTubeLive->isLive) {
       ?><h2><?php echo "There is no live streaming right now!"; ?> </h2> <?php
 
-      var_dump($YouTubeLive->objectResponse);
+      //var_dump($YouTubeLive->objectResponse);
 
     } else {
       echo <<<EOT
