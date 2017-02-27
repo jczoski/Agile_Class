@@ -36,12 +36,34 @@ echo $forum_table;
   <div class="center_this">
   <div id="stream_box">
     <?php
-    $YouTubeLive = new EmbedYoutubeLiveStreaming($CHANNELID, $APIKEY);
+    $YouTubeLive = new EmbedYoutubeLiveStreaming($channelId, $api_key);
+
     if (!$YouTubeLive->isLive) {
-      ?><h2><?php echo "There is currently no live streaming for the channel!" ?></h2><?php ;
+      echo "There is no live streaming right now! Response is (Decoded to object):<br><br>";
+      echo "<pre><code>";
+      var_dump($YouTubeLive->objectResponse);
+      // print_r($YouTubeLive->arrayResponse);
+      echo "</code></pre>";
     } else {
-      echo "There is a live streaming happening right now! See below";
-      echo $YouTubeLive->embed_code;
+      echo <<<EOT
+      There is a live streaming currently! You can see below!<br>
+    <br>
+    Title is: {$YouTubeLive->live_video_title}<br>
+    <br>
+    Description is: {$YouTubeLive->live_video_description}<br>
+    <br>
+    Video ID is: {$YouTubeLive->live_video_id}<br><br>
+    Thumbs are: {$YouTubeLive->live_video_thumb_default}, {$YouTubeLive->live_video_thumb_medium}, {$YouTubeLive->live_video_thumb_high} <br><br>
+    Published at: {$YouTubeLive->live_video_published_at}<br><br>
+    Channel Title: {$YouTubeLive->channel_title}<br><br>
+
+EOT;
+
+      // $YouTubeLive->setEmbedSizeByWidth(200);
+      // $YouTubeLive->setEmbedSizeByHeight(200);
+      // $YouTubeLive->embed_autoplay = false;
+
+      echo $YouTubeLive->embedCode();
     }
     ?>
   </div>
