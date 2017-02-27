@@ -1,10 +1,6 @@
 <?php
 $title = "Home";
 include "includes/header.php";
-require_once('EmbedYoutubeLiveStreaming.php');
-
-$CHANNELID = 'UCMHQalVZ-WOE7T5nitxxQCw';
-$APIKEY = 'AIzaSyBJGoqtDQC3I0Zjn3H8x2G4-kSVr5JjP0Q';
 ?>
 
 <div class="title_image">
@@ -36,7 +32,11 @@ echo $forum_table;
   <div class="center_this">
   <div id="stream_box">
     <?php
-    $YouTubeLive = new EmbedYoutubeLiveStreaming($channelId, $api_key);
+    require_once('EmbedYoutubeLiveStreaming.php');
+
+    $CHANNELID = 'UCMHQalVZ-WOE7T5nitxxQCw';
+    $APIKEY = 'AIzaSyBJGoqtDQC3I0Zjn3H8x2G4-kSVr5JjP0Q';
+    $YouTubeLive = new EmbedYoutubeLiveStreaming($CHANNELID, $APIKEY);
 
     if (!$YouTubeLive->isLive) {
       echo "There is no live streaming right now! Response is (Decoded to object):<br><br>";
