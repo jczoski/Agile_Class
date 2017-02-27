@@ -11,9 +11,10 @@ include "includes/header.php";
 
 $db = db_connect();
 $post_id = mysqli_real_escape_string($db,$_GET["id"]);
+$back_link= mysqli_real_escape_string($db,$_GET['discussion_return'])===""?$_SERVER['HTTP_REFERER']:
+    mysqli_real_escape_string($db,$_GET['discussion_return']);
 $return_site = $_SERVER['HTTP_REFERER'];
 $sql = "Delete from posts where id=$post_id";
-echo $sql;
 $result = $db->query($sql);
 ob_clean();
 header("Location: $return_site");

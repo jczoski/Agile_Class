@@ -14,6 +14,7 @@ $topic = mysqli_real_escape_string($db, $_GET["topic_name"]);
 if(!$topic) {
     $topic = mysqli_real_escape_string($db, $_POST["reply_topic"]);
 }
+$edit_delete_return = mysqli_real_escape_string($db,$_POST["for_edit_delete"]);
 $copy_topic = $topic;
 $author = mysqli_real_escape_string($db, $_GET["author"]);
 $category = mysqli_real_escape_string($db, $_GET["category"]);
@@ -31,13 +32,10 @@ VALUES(null,'$reply_user','$topic','$category',NOW(),NOW(),'$reply_text',0)";
     $result = $db->query($sql);
 }
 
-
 $sql = "SELECT * from posts where topic_name='$topic' and category='$category'";
-
 $result = $db->query($sql);
-//echo "<h2>$topic</h2>";
 
-echo "<table class=\"table-style\"><th><h2>Author</h2></th><th><h2>Topic: $topic</h2></th>";
+echo "<table class='table-style'><th><h2>Author</h2></th><th><h2>Topic: $topic</h2></th>";
 while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_text,$opening_post) = $result->fetch_row()) {
 //$post_date = date("D",$post_date) . date("M",$post_date). date("j",$post_date).date("o",$post_date);
     $sql = "Select image_thumbnail from users where user_name='$author'";
@@ -46,8 +44,8 @@ while (list($id, $author, $topic, $category, $post_date, $modify_date, $post_tex
     $delete = "&nbsp;";
     if ($author === $_SESSION["username"]) {
         $author = "<a href='profile.php'>" . $author. "</a>";
-        $editable = "<a href='edit_post.php?id=$id'>Edit post</a>";
-        $delete = "<a href='delete_post.php?id=$id'>Delete post</a>";
+        $editable = "<a href='edit_post.php?id=$id&discussion_return=$edit_delete_return'>Edit post</a>";
+        $delete = "<a href='delete_post.php?id=$id&discussion_return=$edit_delete_return'>Delete post</a>";
     }
     $posts = <<<POSTS
 
@@ -61,6 +59,8 @@ echo "</table>";
 if (isset($_SESSION["username"])) {
     $user_name = $_SESSION["username"];
     $return_address = $_SERVER['PHP_SELF'];
+//    $edit_delete_return = $_SERVER['HTTP_REFERER'];
+    echo $edit_delete_return;
 $reply_form=<<<REPLY_FORM
     <div>
         <form class="table-style" action="$return_address" method="post">
@@ -69,7 +69,8 @@ $reply_form=<<<REPLY_FORM
             <input type="hidden" name="reply_user" value="$user_name">
             <input type="hidden" name="reply_topic" value="$copy_topic" >
             <input type="hidden" name="reply_category" value="$copy_category" >
-            <input type="submit" name="submit" value="reply"/>
+            <input type="hidden" name="for_edit_delete" value="$edit_delete_return">
+            <input type="submit" name="submit" value="reply"/>            
         </form>
     </div>
 REPLY_FORM;

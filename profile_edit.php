@@ -17,14 +17,17 @@ $submit = mysqli_real_escape_string($db,$_POST["submit"]);
 $submit_pic= $_POST["submit_pic"];
 $username = $_SESSION["username"];
 $submit_text = $_POST["submit_text"];
-$text_size = $_POST["text_size"];
+//$text_size = $_POST["text_size"];
+$text_size = $_POST["preferred_size"]==""?$_SESSION['text_size']:$_POST["preferred_size"];
+
 
 if($submit_text){
+
     $sql = "UPDATE users SET text_size=$text_size
 WHERE user_name='$username'";
     $result = $db->query($sql);
     $_SESSION['text_size'] = $text_size;
-    ob_clean();
+  //  ob_clean();
     header("Location: /profile_edit.php");
 }
 
@@ -57,22 +60,30 @@ if($submit_pic){
 WHERE user_name='$username'";
 
     $result = $db->query($sql);
-}
 
+    $_SESSION['profile_pic'] = $thumb_filename;
+}
+/*
+    $sql = "Select text_size from users where user_name = '$username'";
+    list($text_size)=$db->query($sql)->fetch_row()[0];
+    echo "text: " .$text_size;
+*/
 $text_size_form=<<<TEXT_SETTING
 <form action="/profile_edit.php" method="POST" style="color:white;">
-<label for="text_size">Text Size Preference:</label><br>
-<input name="text_size" value="1" type="radio">smallest<br>
+ <label for="text_size">Text Size Preference: $text_size</label><br>
+<!-- <input name="text_size" value="1" type="radio">smallest<br>
 <input name="text_size" value="2" type="radio">small<br>
 <input name="text_size" value="3" type="radio">normal<br>
 <input name="text_size" value="4" type="radio">larger<br>
-<input name="text_size" value="5" type="radio">largest<br>
+<input name="text_size" value="5" type="radio">largest<br> -->
+<input type="range" id="text_size" min="10" max="30" name="text_size" value=$text_size> 
+<input type="hidden" id="preferred_size" name="preferred_size" value="">
 <input type="submit" name="submit_text" value="Update Text Size" />
 </form>
 TEXT_SETTING;
 
 echo $text_size_form;
-
+//echo "<button onclick='default_text_size'>Reset Size to Default</button>";
 $image_form=<<<END_OF_FORM
 <img src="$thumb_filename" /><br />
 <form action="/profile_edit.php" method="POST" enctype="multipart/form-data">
@@ -84,7 +95,9 @@ $image_form=<<<END_OF_FORM
 END_OF_FORM;
 
 echo $image_form;
-
+echo "<script src='scripts/slider.js'></script>";
+echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
+echo "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>";
 ?>
 <?php
 /*

@@ -46,7 +46,7 @@ if( $submit ){
             }
             // OK - insert the user into the db
             $sql = "INSERT INTO users (user_id, f_name, l_name, user_name, password, email, advanced, image, image_thumbnail, text_size)
-                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email', $advanced_user_check, null, null, 0)";
+                                values(null, '$firstname', '$lastname', '$username', '$encrypted_password', '$email', $advanced_user_check, null, null, 15)";
             $result = $db->query( $sql );
 
             // Look at $result errors and display if there are some
@@ -84,7 +84,7 @@ $form = <<<END_OF_FORM
         
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value="yes" $advanced_user_check><br />
+        <input type="checkbox" name="advanced_user" id="advanced_user" value=" $advanced_user_check"><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
 </div>

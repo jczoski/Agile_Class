@@ -11,7 +11,10 @@ include "includes/header.php";
 
 $db = db_connect();
 $post_id = mysqli_real_escape_string($db,$_GET["id"]);
-$back_link= $_SERVER['HTTP_REFERER'];
+
+$back_link= mysqli_real_escape_string($db,$_GET['discussion_return'])===""?$_SERVER['HTTP_REFERER']:
+    mysqli_real_escape_string($db,$_GET['discussion_return']);
+
 $submit = $_POST["submit"];
 $modified_message = mysqli_real_escape_string($db,$_POST["message"]);
 $id = mysqli_real_escape_string($db, $_POST["same_id"]);

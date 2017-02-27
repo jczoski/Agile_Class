@@ -13,19 +13,12 @@ if(isset($_SESSION["username"])) {
     $profile_pic_location = $_SESSION['profile_pic'];
     $profile_pic_image = "<img src='$profile_pic_location'>";//can be used anywhere in the page
     $preferred_size = $_SESSION['text_size']; //skipping 3 because that is the default
-    $preferred_size_string="";
-    if($preferred_size==1){
-        $preferred_size_string = "10px";
+    if($preferred_size<10){
+        $preferred_size = 15;
     }
-    else if($preferred_size ==2){
-        $preferred_size_string = "15px";
-    }
-    else if($preferred_size==4){
-        $preferred_size_string = "25px";
-    }
-    else if($preferred_size==5){
-        $preferred_size_string = "30px";
-    }
+
+    $preferred_size_string=$preferred_size."px";
+
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +28,8 @@ if(isset($_SESSION["username"])) {
     <title><?php $title ?></title>
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link rel="stylesheet" type="text/css" href="../css/format_table.css" />
-</head><body <?php echo $preferred_size==3?"":"style='font-size:$preferred_size_string;'"; ?>><header class="header-style">
+    <link rel="stylesheet" type="text/css" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css" />
+</head><body <?php echo "style='font-size:$preferred_size_string;'"; ?>><header class="header-style">
     <nav class="nav-style">
         <a href="http://almostdone.joshczoski.com">Home</a>
     </nav>
