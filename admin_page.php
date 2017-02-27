@@ -5,7 +5,7 @@
  * Date: 2/27/2017
  * Time: 9:32 AM
  */
-ob_start();
+
 include "includes/header.php";
 include "includes/functions.php";
 
@@ -33,5 +33,5 @@ echo "</table>";
 
 <?php
 include  "includes/footer.php";
-ob_end_flush();
+
 ?>
