@@ -25,7 +25,6 @@ while(list($user_id, $f_name, $l_name, $user_name, $password, $email, $advanced,
 
 USERS_FORM;
     echo $users;
-
 }
 echo "</table>";
 
