@@ -52,7 +52,6 @@ echo $forum_table;
     <br>
     Description is: {$YouTubeLive->live_video_description}<br>
     <br>
-    Video ID is: {$YouTubeLive->live_video_id}<br><br>
     Channel Title: {$YouTubeLive->channel_title}<br><br>
 
 EOT;
