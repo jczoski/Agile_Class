@@ -42,7 +42,6 @@ echo $forum_table;
       echo "There is no live streaming right now! Response is (Decoded to object):<br><br>";
       echo "<pre><code>";
       var_dump($YouTubeLive->objectResponse);
-      // print_r($YouTubeLive->arrayResponse);
       echo "</code></pre>";
     } else {
       echo <<<EOT
@@ -55,11 +54,6 @@ echo $forum_table;
     Channel Title: {$YouTubeLive->channel_title}<br><br>
 
 EOT;
-
-      // $YouTubeLive->setEmbedSizeByWidth(200);
-      // $YouTubeLive->setEmbedSizeByHeight(200);
-      // $YouTubeLive->embed_autoplay = false;
-
       echo $YouTubeLive->embedCode();
     }
     ?>
