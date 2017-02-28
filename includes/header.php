@@ -42,6 +42,7 @@ if(isset($_SESSION["username"])) {
     <?php if(!isset($_SESSION["username"])){
         echo "<a href='login.php'>Log In/Register</a>";
     }
+
     else {
 
         echo $profile_pic_image . "<br />Hello " ."<a href='profile.php'>$u_name</a>";
