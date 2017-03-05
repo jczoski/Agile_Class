@@ -12,46 +12,48 @@ include "includes/functions.php";
 
 <?php
 $db = db_connect();
-$id =  mysqli_real_escape_string($db,$_GET["id"]);
-$submit = mysqli_real_escape_string($db,$_POST["submit"]);
-$submit_pic= $_POST["submit_pic"];
+$sql = "SELECT * from users WHERE user_name = '$username'";
+$result = $db->query($sql);
+list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
+$id = mysqli_real_escape_string($db, $_GET["id"]);
+$submit = mysqli_real_escape_string($db, $_POST["submit"]);
+$submit_pic = $_POST["submit_pic"];
 $username = $_SESSION["username"];
 $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
-$text_size = $_POST["preferred_size"]==""?$_SESSION['text_size']:$_POST["preferred_size"];
+$text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
+$submit_profile = $_POST["submit_profile"];
 
 
-if($submit_text){
+if ($submit_text) {
 
     $sql = "UPDATE users SET text_size=$text_size
 WHERE user_name='$username'";
     $result = $db->query($sql);
     $_SESSION['text_size'] = $text_size;
-  //  ob_clean();
+    //  ob_clean();
     header("Location: /profile_edit.php");
 }
 
-if($submit_pic){
+if ($submit_pic) {
     $uploaded_file_name = $_FILES["image"]["tmp_name"];
-    move_uploaded_file($uploaded_file_name, "upload/".$_FILES["image"]["name"]);
+    move_uploaded_file($uploaded_file_name, "upload/" . $_FILES["image"]["name"]);
     $image_path = "upload/" . $_FILES["image"]["name"];
     $file_type = $_FILES["image"]["type"];
 
-    if( $file_type == "image/png"){
+    if ($file_type == "image/png") {
         $src = imagecreatefrompng($image_path);
-    }
-    else if( $file_type == "image/jpeg"){
+    } else if ($file_type == "image/jpeg") {
         $src = imagecreatefromjpeg($image_path);
-    }
-    else if( $file_type == "image/gif"){
+    } else if ($file_type == "image/gif") {
         $src = imagecreatefromgif($image_path);
     }
-    list($width,$height)= getimagesize($image_path);
+    list($width, $height) = getimagesize($image_path);
     $new_width = 60;
-    $new_height =($height/$width) * $new_width;
+    $new_height = ($height / $width) * $new_width;
 
-    $tmp = imagecreatetruecolor($new_width,$new_height);
-    imagecopyresampled($tmp,$src,0,0,0,0,$new_width,$new_height,$width,$height);
+    $tmp = imagecreatetruecolor($new_width, $new_height);
+    imagecopyresampled($tmp, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
     $thumb_filename = "images/thumbs/" . $_FILES["image"]["name"];
     imagejpeg($tmp, $thumb_filename, 100);
     imagedestroy($src);
@@ -63,12 +65,24 @@ WHERE user_name='$username'";
 
     $_SESSION['profile_pic'] = $thumb_filename;
 }
+
+
+if ($submit_profile) {
+    $sql = "UPDATE users SET f_name=$firstname, l_name=$lastname, email=$email, advanced=$advanced WHERE user_name='$username'";
+    $result = $db->query($sql);
+    ob_clean();
+    if ($advanced_user_check == 0) {
+        header("Location: /");
+    } else {
+        header("Location: /advanced_application.php");
+    }
+}
 /*
     $sql = "Select text_size from users where user_name = '$username'";
     list($text_size)=$db->query($sql)->fetch_row()[0];
     echo "text: " .$text_size;
 */
-$text_size_form=<<<TEXT_SETTING
+$text_size_form = <<<TEXT_SETTING
 <form action="/profile_edit.php" method="POST" style="color:white;">
  <label for="text_size">Text Size Preference: $text_size</label><br>
 <!-- <input name="text_size" value="1" type="radio">smallest<br>
@@ -84,7 +98,7 @@ TEXT_SETTING;
 
 echo $text_size_form;
 //echo "<button onclick='default_text_size'>Reset Size to Default</button>";
-$image_form=<<<END_OF_FORM
+$image_form = <<<END_OF_FORM
 <img src="$thumb_filename" /><br />
 <form action="/profile_edit.php" method="POST" enctype="multipart/form-data">
 <input type="file" name="image" />
@@ -95,6 +109,25 @@ $image_form=<<<END_OF_FORM
 END_OF_FORM;
 
 echo $image_form;
+
+$profile_form = <<<END_OF_FORM
+    <br />
+    <div class="table-style aqua-text">
+    <form method="POST" action="/registration.php">
+        <label for="firstname">First Name: </label><br/>
+        <input type="text" name="firstname" value="$firstname"/><br/>
+        <label for="lastname">Last Name: </label><br/>
+        <input type="text" name="lastname" value="$lastname"/><br/>
+        <label for="email">Email: </label><br/>
+        <input type="email" name="email" value="$email"/><br/>
+        <label for="advanced_user">Advanced User</label>
+        <input type="checkbox" name="advanced_user" id="advanced_user" value=" $advanced"><br />
+        <input type="submit" name="submit_profile" value="Submit Profile Changes"/><br/>
+    </form><br/>
+</div>
+END_OF_FORM;
+
+echo $profile_form;
 echo "<script src='scripts/slider.js'></script>";
 echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
 echo "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>";
