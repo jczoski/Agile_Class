@@ -113,7 +113,7 @@ echo $image_form;
 $profile_form = <<<END_OF_FORM
     <br />
     <div class="table-style aqua-text">
-    <form method="POST" action="/registration.php">
+    <form method="POST" action="/profile_edit.php">
         <label for="firstname">First Name: </label><br/>
         <input type="text" name="firstname" value="$firstname"/><br/>
         <label for="lastname">Last Name: </label><br/>
