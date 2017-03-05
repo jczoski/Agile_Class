@@ -114,11 +114,11 @@ $profile_form = <<<END_OF_FORM
     <br />
     <div class="table-style aqua-text">
     <form method="POST" action="/profile_edit.php">
-        <label for="firstname">First Name: </label><br/>
+        <label for="firstname">First Name: </label>
         <input type="text" name="firstname" value="$firstname"/><br/>
-        <label for="lastname">Last Name: </label><br/>
+        <label for="lastname">Last Name: </label>
         <input type="text" name="lastname" value="$lastname"/><br/>
-        <label for="email">Email: </label><br/>
+        <label for="email">Email: </label>
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
         <input type="checkbox" name="advanced_user" id="advanced_user" value=" $advanced"><br />
