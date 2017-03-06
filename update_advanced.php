@@ -21,6 +21,7 @@ $db = db_connect();
 $user_id = mysqli_real_escape_string($db, $_GET["user_id"]);
 $sql = "Select from users where user_id=$user_id";
 $result = $db->query($sql);
+echo $result;
 if ($result) {
 
     $submit = mysqli_real_escape_string($db, $_POST["submit"]);
@@ -66,9 +67,9 @@ END_OF_FORM;
 
     echo $form;
 
-} else {
-    header("Location: /admin_page.php?msg=Error Deleting User");
-}
+} /*else {
+    header("Location: /admin_page.php?msg=Error_Updating_User");
+}*/
 ob_clean();
 
 ?>
