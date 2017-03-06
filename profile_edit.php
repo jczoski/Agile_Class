@@ -8,9 +8,7 @@
 ob_start();
 include "includes/header.php";
 include "includes/functions.php";
-?>
 
-<?php
 $db = db_connect();
 $id = mysqli_real_escape_string($db, $_GET["id"]);
 $submit = mysqli_real_escape_string($db, $_POST["submit"]);
@@ -130,6 +128,21 @@ $image_form = <<<END_OF_FORM
 END_OF_FORM;
 
 echo $image_form;
+$big_image = $_SESSION["large_profile_pic"];
+
+echo "<img id='image_to_crop' src='$big_image'>";
+$image_crop_form =<<<IMAGE_CROP_FORM
+<form action="image_cropped.php" id="image_crop_form">
+  <input type="hidden" name="cropx" id="cropx" value="0" />
+  <input type="hidden" name="cropy" id="cropy" value="0" />
+  <input type="hidden" name="cropw" id="cropw" value="0" />
+  <input type="hidden" name="croph" id="croph" value="0" />
+  <input type="hidden" name="image" id="image" value=$big_image>
+  <input type="submit" value="Save Coordinates" />
+</form>
+IMAGE_CROP_FORM;
+echo $image_crop_form;
+
 
 $profile_form = <<<END_OF_FORM
     <br />
@@ -151,55 +164,11 @@ END_OF_FORM;
 
 
 echo $profile_form;
-echo "<script src='scripts/slider.js'></script>";
-echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
 echo "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>";
-?>
-<?php
-/*
-// example upload output: ArrayArray ( [name] => url.txt [type] => text/plain [tmp_name] => /tmp/phpVAkaNU [error] => 0 [size] => 56 )
-if(!empty($submit)){
-    $uploaded_file_name = $_FILES["image"]["tmp_name"];
-    move_uploaded_file($uploaded_file_name, "upload/".$_FILES["image"]["name"]);
-    $image_path = "upload/" . $_FILES["image"]["name"];
-    $file_type = $_FILES["image"]["type"];
-    //
-    if( $file_type == "image/png"){
-        $src = imagecreatefrompng($image_path);
-    }
-    else if( $file_type == "image/jpeg"){
-        $src = imagecreatefromjpeg($image_path);
-    }
-    else if( $file_type == "image/gif"){
-        $src = imagecreatefromgif($image_path);
-    }
-    list($width,$height)= getimagesize($image_path);
-    $new_width = 60;
-    $new_height =($height/$width) * $new_width;
-
-    $tmp = imagecreatetruecolor($new_width,$new_height);
-    imagecopyresampled($tmp,$src,0,0,0,0,$new_width,$new_height,$width,$height);
-    $thumb_filename = "images/thumbs/" . $_FILES["image"]["name"];
-    imagejpeg($tmp, $thumb_filename, 100);
-    imagedestroy($src);
-    imagedestroy($tmp);
-}
-
-
-$image_form=<<<END_OF_FORM
-<img src="$thumb_filename" /><br />
-<img src="$image_path" />
-<form action="/files.php" method="POST" enctype="multipart/form-data">
-<input type="file" name="image" />
-<input type="submit" name="submit" value="Upload File" />
-
-</form>
-
-END_OF_FORM;
-
-echo $image_form;*/
-?>
-<?php
+echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
+echo "<link rel='stylesheet' href='http://jcrop-cdn.tapmodo.com/v2.0.0-RC1/css/Jcrop.css' type='text/css'>";
+echo "<script src='scripts/slider.js'></script>";
+echo "<script src='scripts/crop_it.js'></script>";
 include "includes/footer.php";
 ob_end_flush();
 ?>
