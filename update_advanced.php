@@ -29,6 +29,13 @@ $result = $db->query($sql);
         list($user_id, $f_name, $l_name, $user_name, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
     } else {
         $advanced = mysqli_real_escape_string($db, $_POST["advanced"]);
+        if($advanced == "basic"){
+            $advanced == 0;
+        } elseif ($advanced == "advanced"){
+            $advanced == 1;
+        } elseif ($advanced == "admin"){
+            $advanced == 2;
+        }
 
         if (!empty($submit)) {
             $db = db_connect();
@@ -57,9 +64,9 @@ $result = $db->query($sql);
         <label for="email">Email: $email</label><br/>
         <label for="advanced_user">Advanced User</label>
         <select name="advanced">
-            <option value=0>0 (basic)</option>
-            <option value=1>1 (advanced)</option>
-            <option value=2>2 (admin)</option>
+            <option value="basic">0 (basic)</option>
+            <option value="advanced">1 (advanced)</option>
+            <option value="admin">2 (admin)</option>
         </select><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
