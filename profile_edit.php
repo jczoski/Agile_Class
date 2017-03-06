@@ -24,7 +24,8 @@ $submit_profile = $_POST["submit_profile"];
 $f_name = mysqli_real_escape_string( $db, $_POST["firstname"]);
 $l_name = mysqli_real_escape_string( $db, $_POST["lastname"]);
 $db_email = mysqli_real_escape_string( $db, $_POST["email"]);
-$db_advanced = mysqli_real_escape_string( $db, $_POST["advanced_user"]);
+$db_advanced = isset($_POST["advanced_user"])?TRUE:FALSE;
+
 $sql = "SELECT * from users WHERE user_name = '$username'";
 $result = $db->query($sql);
 list($user_id, $f_name, $l_name, $username, $password, $db_email, $db_advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
