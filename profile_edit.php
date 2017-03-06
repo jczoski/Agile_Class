@@ -67,9 +67,9 @@ WHERE user_name='$username'";
 
 
 if (empty($submit_profile)) {
-    $sql = "SELECT * from users WHERE user_name = '$username'";
+    $sql = "SELECT * from users WHERE user_name='$username'";
     $result = $db->query($sql);
-    list($user_id, $fname, $lname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
+    list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 }else {
     $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
@@ -135,6 +135,7 @@ echo $image_form;
 $profile_form = <<<END_OF_FORM
     <br />
     <div class="table-style aqua-text center_this">
+    $error
     <form method="POST" action="/profile_edit.php">
         <label for="firstname">First Name: </label>
         <input type="text" name="firstname" value="$firstname"/><br/>
@@ -149,9 +150,7 @@ $profile_form = <<<END_OF_FORM
 </div>
 END_OF_FORM;
 
-if (!empty($error)){
-    echo $error;
-}
+
 echo $profile_form;
 echo "<script src='scripts/slider.js'></script>";
 echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
