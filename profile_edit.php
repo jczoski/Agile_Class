@@ -19,7 +19,7 @@ $username = $_SESSION["username"];
 $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
 $text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
-$submit_profile = mysqli_real_escape_string($db, $_POST["submit_profile"]);
+$submit_profile = $_POST["submit_profile"];
 
 
 
