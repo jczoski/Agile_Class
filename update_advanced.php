@@ -30,11 +30,11 @@ $result = $db->query($sql);
     } else {
         $advanced = mysqli_real_escape_string($db, $_POST["advanced"]);
         if($advanced == "basic"){
-            $advanced == 0;
+            $advanced = 0;
         } elseif ($advanced == "advanced"){
-            $advanced == 1;
+            $advanced = 1;
         } elseif ($advanced == "admin"){
-            $advanced == 2;
+            $advanced = 2;
         }
 
         if (!empty($submit)) {
@@ -64,9 +64,9 @@ $result = $db->query($sql);
         <label for="email">Email: $email</label><br/>
         <label for="advanced_user">Advanced User</label>
         <select name="advanced">
-            <option value="0">0 (basic)</option>
-            <option value="1">1 (advanced)</option>
-            <option value="$advanced">2</option>
+            <option value="basic">0 (basic)</option>
+            <option value="advanced">1 (advanced)</option>
+            <option value="admin">2 (admin)</option>
         </select><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
