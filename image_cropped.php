@@ -24,7 +24,7 @@ imagecopyresampled($dst_r,$img_r,0,0,$cropx,$cropy,
     $cropw,$croph,$cropw,$croph);
 ob_clean();
 header('Content-type: image/jpeg');
-imagejpeg($dst_r, null, $jpeg_quality);
+imagejpeg($dst_r, null, 100);
 echo "<img id='image_to_crop' src='$image'>";
 
 include "includes/footer.php";
