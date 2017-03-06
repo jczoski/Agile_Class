@@ -12,9 +12,6 @@ include "includes/functions.php";
 
 <?php
 $db = db_connect();
-$sql = "SELECT * from users WHERE user_name = '$username'";
-$result = $db->query($sql);
-list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 $id = mysqli_real_escape_string($db, $_GET["id"]);
 $submit = mysqli_real_escape_string($db, $_POST["submit"]);
 $submit_pic = $_POST["submit_pic"];
@@ -112,7 +109,7 @@ echo $image_form;
 
 $profile_form = <<<END_OF_FORM
     <br />
-    <div class="table-style aqua-text">
+    <div class="table-style aqua-text center_this">
     <form method="POST" action="/profile_edit.php">
         <label for="firstname">First Name: </label>
         <input type="text" name="firstname" value="$firstname"/><br/>
@@ -121,7 +118,7 @@ $profile_form = <<<END_OF_FORM
         <label for="email">Email: </label>
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value=" $advanced"><br />
+        <input type="checkbox" name="advanced_user" id="advanced_user" value="$advanced"><br />
         <input type="submit" name="submit_profile" value="Submit Profile Changes"/><br/>
     </form><br/>
 </div>
