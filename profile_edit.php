@@ -149,6 +149,9 @@ $profile_form = <<<END_OF_FORM
 </div>
 END_OF_FORM;
 
+if (!empty($error)){
+    echo $error;
+}
 echo $profile_form;
 echo "<script src='scripts/slider.js'></script>";
 echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
