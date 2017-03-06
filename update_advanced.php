@@ -66,7 +66,7 @@ $result = $db->query($sql);
         <select name="advanced">
             <option value="0">0 (basic)</option>
             <option value="1">1 (advanced)</option>
-            <option value="2">2 (admin)</option>
+            <option value="$advanced">2</option>
         </select><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
