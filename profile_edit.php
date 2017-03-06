@@ -12,9 +12,6 @@ include "includes/functions.php";
 
 <?php
 $db = db_connect();
-$sql = "SELECT * from users WHERE user_name = '$username'";
-$result = $db->query($sql);
-list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 $id = mysqli_real_escape_string($db, $_GET["id"]);
 $submit = mysqli_real_escape_string($db, $_POST["submit"]);
 $submit_pic = $_POST["submit_pic"];
