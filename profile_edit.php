@@ -23,10 +23,7 @@ $submit_profile = $_POST["submit_profile"];
 $f_name = $_POST["firstname"];
 $l_name = $_POST["lastname"];
 $email = $_POST["email"];
-$advanced_user_check = isset($_POST["advanced_user"])?TRUE:FALSE;
-
-
-
+$advanced_user_check = isset($_POST["advanced_user"]) ? TRUE : FALSE;
 
 
 if ($submit_text) {
@@ -69,21 +66,24 @@ WHERE user_name='$username'";
 
     $_SESSION['profile_pic'] = $thumb_filename;
 }
+if (empty($submit_profile)) {
+    $sql = "SELECT * from users WHERE user_name='$username'";
+    $result = $db->query($sql);
+    list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbmail, $text_size) = $result->fetch_row();
+} else {
 
-
-
-    $error="";
-    if (empty($f_name)&& $submit_profile){
+    $error = "";
+    if (empty($f_name) && $submit_profile) {
         $error = "First Name is required";
     }
-    if (empty($l_name)&& $submit_profile){
+    if (empty($l_name) && $submit_profile) {
         $error .= "<br>Last Name is required";
     }
-    if (empty($email)&& $submit_profile){
+    if (empty($email) && $submit_profile) {
         $error .= "<br>Email is required";
     }
-    if (($submit_profile) && (empty($error))){
-        if(empty($advanced_user_check)){
+    if (($submit_profile) && (empty($error))) {
+        if (empty($advanced_user_check)) {
             $advanced_user_check = 0;
         }
         $sql = "UPDATE users SET f_name='$f_name',l_name='$l_name',email='$email',advanced=$advanced_user_check WHERE user_name='$username'";
@@ -96,6 +96,7 @@ WHERE user_name='$username'";
         }
 
 
+    }
 }
 /*
     $sql = "Select text_size from users where user_name = '$username'";
