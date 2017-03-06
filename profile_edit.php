@@ -66,12 +66,12 @@ WHERE user_name='$username'";
 }
 
 
-if (empty($submit_profile)) {
+if(empty($submit_profile)) {
     $sql = "SELECT * from users WHERE user_name='$username'";
     $result = $db->query($sql);
     list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
-}else {
+}else{
     $f_name = mysqli_real_escape_string($db, $_POST["firstname"]);
     $l_name = mysqli_real_escape_string($db, $_POST["lastname"]);
     $email = mysqli_real_escape_string($db, $_POST["email"]);
@@ -87,8 +87,8 @@ if (empty($submit_profile)) {
     if (empty($email)&& $submit_profile){
         $error .= "<br>Email is required";
     }
-    if (!empty($submit_profile) && (empty($error))){
-        $sql = "UPDATE users SET f_name='$f_name', l_name='$l_name', email='$email', advanced=$advanced WHERE user_name='$username'";
+    if (($submit_profile) && (empty($error))){
+        $sql = "UPDATE users SET f_name='$f_name',l_name='$l_name',email='$email',advanced=$advanced WHERE user_name='$username'";
         $result = $db->query($sql);
         ob_clean();
         if ($advanced_user_check == 0) {
