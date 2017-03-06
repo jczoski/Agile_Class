@@ -22,7 +22,7 @@ $advanced_user = mysqli_real_escape_string( $db, $_POST["advanced_user"]);*/
 $submit = mysqli_real_escape_string( $db, $_POST["submit"]);
 
 if ($submit){
-    $sql = "SELECT user_name,password from users where user_name='$username'";
+    $sql = "SELECT user_name, password from users where user_name='$username'";
     $result = $db->query( $sql );
     if( $result && $result->num_rows){
         list( $username, $password_hash ) = $result->fetch_row();
