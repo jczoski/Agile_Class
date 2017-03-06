@@ -22,10 +22,10 @@ $user_id = mysqli_real_escape_string($db,$_GET["user_id"]);
 $sql = "Delete from users where user_id=$user_id";
 $result = $db->query($sql);
 if( $result ){
-    header("Location: /admin_page.php?msg=User $user_id successfully deleted");
+    header("Location: /admin_page.php?msg=User-$user_id-successfully-deleted");
 } else {
-    header("Location: /admin_page.php?msg=Error Deleting User");
+    header("Location: /admin_page.php?msg=Error-Deleting-User");
 }
-ob_clean();
+ob_end_flush();
 
 ?>
