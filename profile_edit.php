@@ -72,10 +72,10 @@ if (empty($submit_profile)) {
     list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 }else {
-    $f_name = mysqli_real_escape_string($db, $_POST["f_name"]);
-    $l_name = mysqli_real_escape_string($db, $_POST["l_name"]);
+    $f_name = mysqli_real_escape_string($db, $_POST["firstname"]);
+    $l_name = mysqli_real_escape_string($db, $_POST["lastname"]);
     $email = mysqli_real_escape_string($db, $_POST["email"]);
-    $advanced = mysqli_real_escape_string($db, $_POST["advanced_user"]);
+    $advanced = isset($_POST["advanced_user"])?TRUE:FALSE;
 
     $error="";
     if (empty($f_name)&& $submit_profile){
