@@ -22,16 +22,17 @@ $advanced_user = mysqli_real_escape_string( $db, $_POST["advanced_user"]);*/
 $submit = mysqli_real_escape_string( $db, $_POST["submit"]);
 
 if ($submit){
-    $sql = "SELECT user_name,password from users where user_name='$username'";
+    $sql = "SELECT user_name, password from users where user_name='$username'";
     $result = $db->query( $sql );
     if( $result && $result->num_rows){
         list( $username, $password_hash ) = $result->fetch_row();
         if(password_verify( $password, $password_hash )){
-            $sql = "Select image_thumbnail, text_size from users where user_name='$username'";
+            $sql = "Select image_thumbnail, text_size, advanced from users where user_name='$username'";
             $pic = $db->query($sql)->fetch_row()[0];
             $_SESSION['text_size'] = $db->query($sql)->fetch_row()[1];
             $_SESSION['username'] = $username;
             $_SESSION['profile_pic'] = $pic;
+            $_SESSION['advanced'] = $db->query($sql)->fetch_row()[2];
             ob_clean();
             header("Location: /");
         }
