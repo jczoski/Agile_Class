@@ -73,7 +73,7 @@ WHERE user_name='$username'";
 
 
 if ($submit_profile) {
-    $sql = "UPDATE users SET f_name='$firstname', l_name='$lastname', email='$email', advanced=$advanced WHERE user_name='$username'";
+    $sql = "UPDATE users SET f_name='$f_name', l_name='$l_name', email='$db_email', advanced=$db_advanced WHERE user_name='$username'";
     $result = $db->query($sql);
     ob_clean();
     if ($advanced_user_check == 0) {
