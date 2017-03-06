@@ -69,7 +69,7 @@ WHERE user_name='$username'";
 if (empty($submit_profile)) {
     $sql = "SELECT * from users WHERE user_name='$username'";
     $result = $db->query($sql);
-    list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
+    list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 }else {
     $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
