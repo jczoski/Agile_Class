@@ -12,7 +12,9 @@ include "includes/functions.php";
 
 <?php
 $db = db_connect();
-
+$sql = "SELECT * from users WHERE user_name = '$username'";
+$result = $db->query($sql);
+list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 $id = mysqli_real_escape_string($db, $_GET["id"]);
 $submit = mysqli_real_escape_string($db, $_POST["submit"]);
 $submit_pic = $_POST["submit_pic"];
@@ -21,14 +23,6 @@ $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
 $text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
 $submit_profile = $_POST["submit_profile"];
-$f_name = mysqli_real_escape_string( $db, $_POST["firstname"]);
-$l_name = mysqli_real_escape_string( $db, $_POST["lastname"]);
-$db_email = mysqli_real_escape_string( $db, $_POST["email"]);
-$db_advanced = isset($_POST["advanced_user"])?TRUE:FALSE;
-
-$sql = "SELECT * from users WHERE user_name = '$username'";
-$result = $db->query($sql);
-list($user_id, $f_name, $l_name, $username, $password, $db_email, $db_advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 
 if ($submit_text) {
@@ -73,7 +67,16 @@ WHERE user_name='$username'";
 }
 
 
-
+if ($submit_profile) {
+    $sql = "UPDATE users SET f_name='$firstname', l_name='$lastname', email='$email', advanced=$advanced WHERE user_name='$username'";
+    $result = $db->query($sql);
+    ob_clean();
+    if ($advanced_user_check == 0) {
+        header("Location: /");
+    } else {
+        header("Location: /advanced_application.php");
+    }
+}
 /*
     $sql = "Select text_size from users where user_name = '$username'";
     list($text_size)=$db->query($sql)->fetch_row()[0];
@@ -112,29 +115,19 @@ $profile_form = <<<END_OF_FORM
     <div class="table-style aqua-text">
     <form method="POST" action="/profile_edit.php">
         <label for="firstname">First Name: </label>
-        <input type="text" name="firstname" value="$f_name"/><br/>
+        <input type="text" name="firstname" value="$firstname" placeholder="$firstname"/><br/>
         <label for="lastname">Last Name: </label>
-        <input type="text" name="lastname" value="$l_name"/><br/>
+        <input type="text" name="lastname" value="$lastname" placeholder="$lastname"/><br/>
         <label for="email">Email: </label>
-        <input type="email" name="email" value="$db_email" /><br/>
+        <input type="email" name="email" value="$email" placeholder="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value="$db_advanced"><br />
+        <input type="checkbox" name="advanced_user" id="advanced_user" value="$advanced"><br />
         <input type="submit" name="submit_profile" value="Submit Profile Changes"/><br/>
     </form><br/>
 </div>
 END_OF_FORM;
 
 echo $profile_form;
-if ($submit_profile) {
-    $sql = "UPDATE users SET f_name='$f_name', l_name='$l_name', email='$db_email', advanced=$db_advanced WHERE user_name='$username'";
-    $result = $db->query($sql);
-    ob_clean();
-    if ($advanced_user_check == 0) {
-        header("Location: /");
-    } else {
-        header("Location: /advanced_application.php");
-    }
-}
 echo "<script src='scripts/slider.js'></script>";
 echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
 echo "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>";
