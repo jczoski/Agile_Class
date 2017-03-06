@@ -23,7 +23,7 @@ $submit_profile = $_POST["submit_profile"];
 $f_name = $_POST["firstname"];
 $l_name = $_POST["lastname"];
 $email = $_POST["email"];
-$advanced = isset($_POST["advanced_user"])?TRUE:FALSE;
+$advanced_user_check = isset($_POST["advanced_user"])?TRUE:FALSE;
 
 
 
@@ -86,7 +86,7 @@ WHERE user_name='$username'";
         if(empty($advanced_user_check)){
             $advanced_user_check = 0;
         }
-        $sql = "UPDATE users SET f_name='$f_name',l_name='$l_name',email='$email',advanced=$advanced WHERE user_name='$username'";
+        $sql = "UPDATE users SET f_name='$f_name',l_name='$l_name',email='$email',advanced=$advanced_user_check WHERE user_name='$username'";
         $result = $db->query($sql);
         ob_clean();
         if ($advanced_user_check == 0) {
@@ -142,7 +142,7 @@ $profile_form = <<<END_OF_FORM
         <label for="email">Email: </label>
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
-        <input type="checkbox" name="advanced_user" id="advanced_user" value="$advanced"><br />
+        <input type="checkbox" name="advanced_user" id="advanced_user" value="$advanced_user_check"><br />
         <input type="submit" name="submit_profile" value="Submit Profile Changes"/><br/>
     </form><br/>
 </div>
