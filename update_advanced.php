@@ -19,17 +19,14 @@ if (!isset($_SESSION["username"])) {
 
 $db = db_connect();
 $user_id = mysqli_real_escape_string($db, $_GET["user_id"]);
-$sql = "Select from users where user_id=$user_id";
+$sql = "Select * from users where user_id=$user_id";
 $result = $db->query($sql);
 
     $submit = mysqli_real_escape_string($db, $_POST["submit"]);
     if (empty($submit)) {
-        $sql = "SELECT from users where user_id=$user_id";
+        $sql = "SELECT * from users where user_id=$user_id";
         $result = $db->query($sql);
-        list($user_id, $f_name, $l_name,
-            $user_name, $password, $email,
-            $advanced, $image, $image_thumbnail,
-            $text_size) = $result->fetch_row();
+        list($user_id, $f_name, $l_name, $user_name, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
     } else {
         $advanced = mysqli_real_escape_string($db, $_POST["advanced"]);
 
