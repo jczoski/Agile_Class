@@ -20,6 +20,9 @@ $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
 $text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
 $submit_profile = $_POST["submit_profile"];
+$sql = "SELECT * from users WHERE user_name = '$username'";
+$result = $db->query($sql);
+list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 
 if ($submit_text) {
