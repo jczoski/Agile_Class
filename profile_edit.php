@@ -69,26 +69,26 @@ WHERE user_name='$username'";
 if (empty($submit_profile)) {
     $sql = "SELECT * from users WHERE user_name='$username'";
     $result = $db->query($sql);
-    list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
+    list($user_id, $f_name, $l_name, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
 
 }else {
-    $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
-    $lastname = mysqli_real_escape_string($db, $_POST["lastname"]);
+    $f_name = mysqli_real_escape_string($db, $_POST["firstname"]);
+    $l_name = mysqli_real_escape_string($db, $_POST["lastname"]);
     $email = mysqli_real_escape_string($db, $_POST["email"]);
     $advanced = mysqli_real_escape_string($db, $_POST["advanced_user"]);
 
     $error="";
-    if (empty($firstname)&& $submit_profile){
+    if (empty($f_name)&& $submit_profile){
         $error = "First Name is required";
     }
-    if (empty($lastname)&& $submit_profile){
+    if (empty($l_name)&& $submit_profile){
         $error .= "<br>Last Name is required";
     }
     if (empty($email)&& $submit_profile){
         $error .= "<br>Email is required";
     }
     if (!empty($submit_profile) && (empty($error))){
-        $sql = "UPDATE users SET f_name='$firstname', l_name='$lastname', email='$email', advanced=$advanced WHERE user_name='$username'";
+        $sql = "UPDATE users SET f_name='$f_name', l_name='$l_name', email='$email', advanced=$advanced WHERE user_name='$username'";
         $result = $db->query($sql);
         ob_clean();
         if ($advanced_user_check == 0) {
@@ -138,9 +138,9 @@ $profile_form = <<<END_OF_FORM
     $error
     <form method="POST" action="/profile_edit.php">
         <label for="firstname">First Name: </label>
-        <input type="text" name="firstname" value="$firstname"/><br/>
+        <input type="text" name="firstname" value="$f_name"/><br/>
         <label for="lastname">Last Name: </label>
-        <input type="text" name="lastname" value="$lastname"/><br/>
+        <input type="text" name="lastname" value="$l_name"/><br/>
         <label for="email">Email: </label>
         <input type="email" name="email" value="$email"/><br/>
         <label for="advanced_user">Advanced User</label>
