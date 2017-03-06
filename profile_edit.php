@@ -20,6 +20,11 @@ $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
 $text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
 $submit_profile = $_POST["submit_profile"];
+$f_name = $_POST["firstname"];
+$l_name = $_POST["lastname"];
+$email = $_POST["email"];
+$advanced = isset($_POST["advanced_user"])?TRUE:FALSE;
+
 
 
 
