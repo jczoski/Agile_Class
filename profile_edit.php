@@ -83,7 +83,7 @@ WHERE user_name='$username'";
         $error .= "<br>Email is required";
     }
     if (($submit_profile) && (empty($error))){
-        $sql = "UPDATE users SET f_name='$f_name',l_name='$l_name',email='$email',advanced=$advanced WHERE user_name='$username'";
+        $sql = "UPDATE users SET f_name='$f_name',l_name='$l_name',email='$email' WHERE user_name='$username'";
         $result = $db->query($sql);
         ob_clean();
         if ($advanced_user_check == 0) {
