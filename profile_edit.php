@@ -20,9 +20,8 @@ $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
 $text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
 $submit_profile = $_POST["submit_profile"];
-$sql = "SELECT * from users WHERE user_name = '$username'";
-$result = $db->query($sql);
-list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
+
+
 
 
 if ($submit_text) {
@@ -67,15 +66,38 @@ WHERE user_name='$username'";
 }
 
 
-if ($submit_profile) {
-    $sql = "UPDATE users SET f_name='$firstname', l_name='$lastname', email='$email', advanced=$advanced WHERE user_name='$username'";
+if (empty($submit_profile)) {
+    $sql = "SELECT * from users WHERE user_name = '$username'";
     $result = $db->query($sql);
-    ob_clean();
-    if ($advanced_user_check == 0) {
-        header("Location: /profile.php");
-    } else {
-        header("Location: /advanced_application.php");
+    list($user_id, $firstname, $lastname, $username, $password, $email, $advanced, $image, $image_thumbnail, $text_size) = $result->fetch_row();
+
+} else {
+    $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
+    $lastname = mysqli_real_escape_string($db, $_POST["lastname"]);
+    $email = mysqli_real_escape_string($db, $_POST["email"]);
+    $advanced = mysqli_real_escape_string($db, $_POST["advanced_user"]);
+
+    $error="";
+    if (empty($firstname)&& $submit_profile){
+        $error = "First Name is required";
     }
+    if (empty($lastname)&& $submit_profile){
+        $error = "Last Name is required";
+    }
+    if (empty($email)&& $submit_profile){
+        $error = "Email is required";
+    }
+    if ($submit_profile && (empty($error))){
+        $sql = "UPDATE users SET f_name='$firstname', l_name='$lastname', email='$email', advanced=$advanced WHERE user_name='$username'";
+        $result = $db->query($sql);
+        ob_clean();
+        if ($advanced_user_check == 0) {
+            header("Location: /profile.php");
+        } else {
+            header("Location: /advanced_application.php");
+        }
+    }
+
 }
 /*
     $sql = "Select text_size from users where user_name = '$username'";
