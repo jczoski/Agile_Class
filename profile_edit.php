@@ -19,7 +19,7 @@ $username = $_SESSION["username"];
 $submit_text = $_POST["submit_text"];
 //$text_size = $_POST["text_size"];
 $text_size = $_POST["preferred_size"] == "" ? $_SESSION['text_size'] : $_POST["preferred_size"];
-$submit_profile = $_POST["submit_profile"];
+$submit_profile = mysqli_real_escape_string($db, $_POST["submit_profile"]);
 
 
 
@@ -87,7 +87,7 @@ if (empty($submit_profile)) {
     if (empty($email)&& $submit_profile){
         $error .= "<br>Email is required";
     }
-    if ($submit_profile && (empty($error))){
+    if (!empty($submit_profile) && (empty($error))){
         $sql = "UPDATE users SET f_name='$firstname', l_name='$lastname', email='$email', advanced=$advanced WHERE user_name='$username'";
         $result = $db->query($sql);
         ob_clean();
