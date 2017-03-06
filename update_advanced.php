@@ -63,10 +63,10 @@ $result = $db->query($sql);
         <label for"username">Username: $user_name</label><br/>
         <label for="email">Email: $email</label><br/>
         <label for="advanced_user">Advanced User</label>
-        <select name="advanced">
-            <option value="basic">0 (basic)</option>
-            <option value="advanced">1 (advanced)</option>
-            <option value="admin">2 (admin)</option>
+        <select name="advanced" value="$advanced>
+            <option value="0">0 (basic)</option>
+            <option value="1">1 (advanced)</option>
+            <option value="2">2 (admin)</option>
         </select><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
