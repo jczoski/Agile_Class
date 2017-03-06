@@ -73,16 +73,7 @@ WHERE user_name='$username'";
 }
 
 
-if ($submit_profile) {
-    $sql = "UPDATE users SET f_name='$f_name', l_name='$l_name', email='$db_email', advanced=$db_advanced WHERE user_name='$username'";
-    $result = $db->query($sql);
-    ob_clean();
-    if ($advanced_user_check == 0) {
-        header("Location: /");
-    } else {
-        header("Location: /advanced_application.php");
-    }
-}
+
 /*
     $sql = "Select text_size from users where user_name = '$username'";
     list($text_size)=$db->query($sql)->fetch_row()[0];
@@ -134,6 +125,16 @@ $profile_form = <<<END_OF_FORM
 END_OF_FORM;
 
 echo $profile_form;
+if ($submit_profile) {
+    $sql = "UPDATE users SET f_name='$f_name', l_name='$l_name', email='$db_email', advanced=$db_advanced WHERE user_name='$username'";
+    $result = $db->query($sql);
+    ob_clean();
+    if ($advanced_user_check == 0) {
+        header("Location: /");
+    } else {
+        header("Location: /advanced_application.php");
+    }
+}
 echo "<script src='scripts/slider.js'></script>";
 echo "<script src='http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js'></script>";
 echo "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>";
