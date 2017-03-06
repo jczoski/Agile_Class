@@ -5,12 +5,13 @@
  * Date: 2/27/2017
  * Time: 9:32 AM
  */
-
+ob_start();
 include "includes/header.php";
 include "includes/functions.php";
 
 if(!isset($_SESSION["username"])){
-    header("Location: almostdone.joshczoski.com");
+    ob_clean();
+    header("Location: /index.php");
 }
 
 $db= db_connect();
@@ -33,5 +34,5 @@ echo "</table>";
 
 <?php
 include  "includes/footer.php";
-
+ob_flush();
 ?>
