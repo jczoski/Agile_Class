@@ -11,7 +11,7 @@ include "includes/functions.php";
 include "includes/header.php";
 
 if (!isset($_SESSION["username"])) {
-    /*if ($_SESSION['advanced'] != 3) {*/
+    /*if ($_SESSION['advanced'] != 2) {*/
     ob_clean();
     header("Location: /index.php");
     /*}*/
@@ -57,9 +57,9 @@ $result = $db->query($sql);
         <label for="email">Email: $email</label><br/>
         <label for="advanced_user">Advanced User</label>
         <select name="advanced">
-            <option value="1">1 (basic)</option>
-            <option value="2">2 (advanced)</option>
-            <option value="3">3 (admin)</option>
+            <option value=0>0 (basic)</option>
+            <option value=1>1 (advanced)</option>
+            <option value=2>2 (admin)</option>
         </select><br />
         <input type="submit" name="submit" value="Submit"/><br/>
     </form><br/>
